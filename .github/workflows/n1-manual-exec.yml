@@ -24,3 +24,12 @@ jobs:
         with:
           name: tests_reports
           path: ./cypress/reports/html
+
+      - name: Notification Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
+        run:
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "Build feita com sucesso! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }}"}' \
+          $DISCORD_WEBHOOK_URL

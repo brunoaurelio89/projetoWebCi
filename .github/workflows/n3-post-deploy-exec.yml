@@ -6,8 +6,6 @@ on:
     types:
       - completed
 
-if: ${{github.event.workflow_run.conclusion == 'success'}}
-
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
@@ -28,3 +26,13 @@ jobs:
         with:
           name: tests_reports
           path: ./cypress/reports/html
+
+      - name: Notification Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
+        run:
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "Build feita com sucesso! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }}"}' \
+          $DISCORD_WEBHOOK_URL
+
