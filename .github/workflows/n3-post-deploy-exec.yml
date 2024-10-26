@@ -1,8 +1,8 @@
-name: 'N3 - Execution from Deploy'
+name: 'N3 Execution from Deploy'
 
 on:
   workflows_run:
-    workflows: ['N1 - Manual Execution']
+    workflows: ['N1 Manual Execution']
     types:
       - completed
 
@@ -10,7 +10,7 @@ if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
 jobs:
   e2e-tests:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 

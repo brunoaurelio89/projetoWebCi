@@ -1,4 +1,4 @@
-name: 'N1 - Manual Execution'
+name: 'N1 Manual Execution'
 
 on:
   workflow_dispatch:
