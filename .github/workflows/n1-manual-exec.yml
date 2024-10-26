@@ -1,5 +1,5 @@
 
-name: 'N1 - Execução Manual'
+name: 'N1 - Manual Execution'
 
 on:
   workflow_dispatch:

@@ -1,6 +1,6 @@
 {
   "name": "trabalho_web_ci",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Trabalho de conclusão da disciplina de integração continua",
   "main": "index.js",
   "scripts": {
