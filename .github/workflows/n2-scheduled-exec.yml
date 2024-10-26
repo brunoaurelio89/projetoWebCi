@@ -2,7 +2,7 @@ name: "N2 Scheduled Execution"
 
 on:
   schedule:
-    - cron: "50 * * * *"
+    - cron: "40 * * * *"
 
 jobs:
   e2e-tests:
@@ -10,13 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Instalando Yarn
+      - name: Install Yarn
         run: npm install -g yarn
 
-      - name: Instalando dependencies
+      - name: Install dependencies
         run: yarn
 
-      - name: Testes e2e
+      - name: E2E Test
         run: yarn cypress run
 
       - uses: actions/upload-artifact@v4
@@ -24,3 +24,12 @@ jobs:
         with:
           name: tests_reports
           path: ./cypress/reports/html
+
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "Build feita com sucesso! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }}"}' \
+          $DISCORD_WEBHOOK_URL
