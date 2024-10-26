@@ -18,4 +18,6 @@ jobs:
       - name: Instalando dependencies
         run: yarn
 
+      - name: Testes e2e
+        run: npx cypress run
 
