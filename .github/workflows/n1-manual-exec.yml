@@ -19,5 +19,5 @@ jobs:
         run: yarn
 
       - name: Testes e2e
-        run: npx cypress run
+        run: yarn cypress run
 
