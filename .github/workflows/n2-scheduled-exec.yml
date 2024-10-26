@@ -2,7 +2,7 @@ name: "N2 Scheduled Execution"
 
 on:
   schedule:
-    - cron: "40 * * * *"
+    - cron: "52 * * * *"
 
 jobs:
   e2e-tests:
@@ -31,5 +31,5 @@ jobs:
           TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "Build feita com sucesso! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }}"}' \
+          -d '{"content": "Scheduled Pipeline! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }}"}' \
           $DISCORD_WEBHOOK_URL

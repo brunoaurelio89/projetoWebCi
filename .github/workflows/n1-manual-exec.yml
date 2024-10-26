@@ -25,12 +25,26 @@ jobs:
           name: tests_reports
           path: ./cypress/reports/html
 
+      # - name: Notify Discord
+      #   env:
+      #     DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      #     TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
+      #   run: |
+      #     curl -X POST -H "Content-Type: application/json" \
+      #     -d '{"content": "Manual Pipeline! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }}"}' \
+      #     $DISCORD_WEBHOOK_URL
+
       - name: Notify Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "Build feita com sucesso! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }}"}' \
+          -d '{
+          "username": "Logs -GitHub"
+          "content": "Manual Pipeline! ✅ 
+          \nStatus: `${{ job.status }}` 
+          \nAuthor: @${{ github.actor }}"
+          \n"icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4"}' \
           $DISCORD_WEBHOOK_URL
           
