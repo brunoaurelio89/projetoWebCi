@@ -1,27 +1,26 @@
-name: 'N2 Scheduled Execution'
-
+name: "N2 Scheduled Execution"
 
 on:
   schedule:
-    - cron: '50 * * * *'
+    - cron: "50 * * * *"
 
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Instalando Yarn
-      run: npm install -g yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
 
-    - name: Instalando dependencies
-      run: yarn
+      - name: Instalando dependencies
+        run: yarn
 
-    - name: Testes e2e
-      run: yarn cypress run
+      - name: Testes e2e
+        run: yarn cypress run
 
-    - uses: actions/upload-artifact@v4
-      # if: ${{ !cancelled() }}
-      with:
-        name: tests_reports
-        path: ./cypress/reports/html
+      - uses: actions/upload-artifact@v4
+        # if: ${{ !cancelled() }}
+        with:
+          name: tests_reports
+          path: ./cypress/reports/html
