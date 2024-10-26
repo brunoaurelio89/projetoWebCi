@@ -1,8 +1,7 @@
-
-class Item{
-    AddNewItemCart(){
-        cy.contains("Add to cart").click()
-    }
+class Item {
+  AddNewItemCart() {
+    cy.contains("Add to cart").click();
+  }
 }
 
-export default new Item()
+export default new Item();
