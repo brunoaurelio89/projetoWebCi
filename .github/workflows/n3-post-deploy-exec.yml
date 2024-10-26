@@ -1,4 +1,4 @@
-name: "N3 - Execution from Deploy"
+name: 'N3 - Execution from Deploy'
 
 on:
   workflows_run:
