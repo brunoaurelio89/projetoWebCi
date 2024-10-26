@@ -2,7 +2,7 @@ name: "N3 - Execution from Deploy"
 
 on:
   workflows_run:
-    workflows: ["N1 - Manual Execution"]
+    workflows: ['N1 - Manual Execution']
     types:
       - completed
 
