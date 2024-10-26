@@ -40,8 +40,6 @@ jobs:
           TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{
-          "username": "Logs GitHub",
-          "content": "Manual Pipeline! ✅ \nStatus: `${{ job.status }}` \nAuthor: @${{ github.actor }}" \n"icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4"}' \
+          -d '{"content": "Manual Pipeline! ✅ \nStatus: `${{ job.status }}` \nAutor: @${{ github.actor }} \nhttps://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4 "}' \
           $DISCORD_WEBHOOK_URL
           
