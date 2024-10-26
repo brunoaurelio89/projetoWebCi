@@ -1,9 +1,9 @@
-name: "N2 - Scheduled Execution"
+name: 'N2 Scheduled Execution'
 
 
 on:
   schedule:
-    - cron: '40 * * * *'
+    - cron: '50 * * * *'
 
 jobs:
   e2e-tests:
