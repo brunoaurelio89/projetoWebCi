@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Install Yarn') {
             steps {
                 bat 'npm install -g yarn'
@@ -25,11 +19,10 @@ pipeline {
                 bat 'yarn cypress run'
             }
         }
-
-        // stage('Archive Test Reports') {
-        //     steps {
-        //         archiveArtifacts artifacts: 'cypress/reports/html/**/*', fingerprint: true
-        //     }
-        // }
-}
+    }
+    post {
+        always {
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        }
+    }
 }
