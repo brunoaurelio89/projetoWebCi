@@ -14,11 +14,11 @@ pipeline {
             }
         }
 
-        stage('Install dependencies') {
-            steps {
-                bat 'yarn'
-            }
-        }
+        // stage('Install dependencies') {
+        //     steps {
+        //         bat 'yarn'
+        //     }
+        // }
 
         stage('E2E Test') {
             steps {
@@ -26,10 +26,10 @@ pipeline {
             }
         }
 
-        stage('Archive Test Reports') {
-            steps {
-                archiveArtifacts artifacts: 'cypress/reports/html/**/*', fingerprint: true
-            }
-        }
+        // stage('Archive Test Reports') {
+        //     steps {
+        //         archiveArtifacts artifacts: 'cypress/reports/html/**/*', fingerprint: true
+        //     }
+        // }
 }
 }
