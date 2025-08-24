@@ -38,7 +38,7 @@ pipeline {
                     }
 
                     if (fileExists(cypressReport)) {
-                        bat "cp ${cypressReport} ${targetReport}"
+                        bat "cp -r ${cypressReport} ${targetReport}"
                     }
                 }
             }
