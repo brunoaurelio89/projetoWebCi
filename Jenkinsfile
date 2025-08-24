@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'ubuntu-latest' }
+    agent any
 
     stages {
         stage('Checkout') {
@@ -31,4 +31,5 @@ pipeline {
                 archiveArtifacts artifacts: 'cypress/reports/html/**/*', fingerprint: true
             }
         }
+}
 }
