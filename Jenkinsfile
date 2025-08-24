@@ -26,32 +26,19 @@ pipeline {
             }
         }
 
-        stage ('Analisa se existe pasta e relatório'){
-            steps{
-                scripts{
+        stage('Publicar Reports') {
+            steps {
+                script {
                     def reportsDir = "${WORKSPACE}/reports"
                     def cypressReport = "${WORKSPACE}/cypress/reports/html/index.html"
                     def targetReport = "${reportsDir}/index.html"
 
-                    // Cria a pasta reports se não existir
                     if (!fileExists(reportsDir)) {
-                        echo "Criando pasta de reports..."
-                        new File(reportsDir).mkdirs()
+                        bat "mkdir -p ${reportsDir}"
                     }
 
-                    // Se o Cypress gerou relatório, copia
                     if (fileExists(cypressReport)) {
-                        echo "Copiando relatório do Cypress para reports/"
-                        sh "cp ${cypressReport} ${targetReport}"
-                    } else {
-                        // Se não existir, cria um placeholder
-                        echo "Nenhum relatório encontrado, criando placeholder..."
-                        writeFile file: targetReport, text: """
-                            <html>
-                                <head><title>Relatório Vazio</title></head>
-                                <body><h2>Nenhum relatório do Cypress foi gerado.</h2></body>
-                            </html>
-                        """
+                        bat "cp ${cypressReport} ${targetReport}"
                     }
                 }
             }
