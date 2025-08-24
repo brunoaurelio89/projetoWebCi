@@ -19,10 +19,23 @@ pipeline {
                 bat 'yarn cypress run'
             }
         }
+        stage('Geração do relatório'){
+            steps {
+                publishHTML(target: [
+                    reportDir: 'reports/html',       // pasta onde está o relatório
+                    reportFiles: 'index.html',       // arquivo principal do relatório
+                    reportName: 'Relatório de Testes', // nome que aparece na aba do Jenkins
+                    keepAll: true,                   // para manter histórico de builds antigos deve estar marcado como true
+                    alwaysLinkToLastBuild: true,     // link direto para último relatório
+                    allowMissing: false              // essa condição faz com que tudo sempre fique rodando
+                ])
+            }
+        }
+
     }
     post {
         always {
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, icon: '', keepAll: true, reportDir: '', reportFiles: 'index.html', reportName: 'Relatório de Testes', reportTitles: '', useWrapperFileDirectly: true])
         }
     }
 }
