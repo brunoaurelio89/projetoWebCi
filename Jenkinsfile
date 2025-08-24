@@ -14,15 +14,15 @@ pipeline {
             }
         }
 
-        // stage('Install dependencies') {
-        //     steps {
-        //         bat 'yarn'
-        //     }
-        // }
+        stage('Install dependencies') {
+            steps {
+                bat 'yarn install'
+            }
+        }
 
         stage('E2E Test') {
             steps {
-                bat 'npx cypress run'
+                bat 'yarn cypress run'
             }
         }
 
