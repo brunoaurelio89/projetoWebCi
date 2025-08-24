@@ -16,7 +16,7 @@ describe("Suite Test Case of Automation Exercises", () => {
     cy.visit("/");
   });
 
-  it("Test Case 1: Register User", () => {
+  it.only("Test Case 1: Register User", () => {
     RegisterNew.fillForm();
     RegisterNew.DeleteAccountCreated();
   });
