@@ -19,15 +19,53 @@ pipeline {
                 bat 'yarn cypress run'
             }
         }
-        stage('Geração do relatório'){
+    
+        stage('Roda Cypress Reports') {
             steps {
-                publishHTML(target: [
-                    reportDir: 'reports',               // pasta onde está o relatório
-                    reportFiles: 'index.html',          // arquivo principal do relatório
-                    reportName: 'Reports Tests',        // nome que aparece na aba do Jenkins
-                    keepAll: true,                      // para manter histórico de builds antigos deve estar marcado como true
-                    alwaysLinkToLastBuild: true,        // link direto para último relatório
-                    allowMissing: false                 // essa condição faz com que tudo sempre fique rodando
+                bat 'npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,json=false'
+            }
+        }
+
+        stage ('Analisa se existe pasta e relatório'){
+            steps{
+                scripts{
+                    def reportsDir = "${WORKSPACE}/reports"
+                    def cypressReport = "${WORKSPACE}/cypress/reports/html/index.html"
+                    def targetReport = "${reportsDir}/index.html"
+
+                    // Cria a pasta reports se não existir
+                    if (!fileExists(reportsDir)) {
+                        echo "Criando pasta de reports..."
+                        new File(reportsDir).mkdirs()
+                    }
+
+                    // Se o Cypress gerou relatório, copia
+                    if (fileExists(cypressReport)) {
+                        echo "Copiando relatório do Cypress para reports/"
+                        sh "cp ${cypressReport} ${targetReport}"
+                    } else {
+                        // Se não existir, cria um placeholder
+                        echo "Nenhum relatório encontrado, criando placeholder..."
+                        writeFile file: targetReport, text: """
+                            <html>
+                                <head><title>Relatório Vazio</title></head>
+                                <body><h2>Nenhum relatório do Cypress foi gerado.</h2></body>
+                            </html>
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Publicacao do Reports no Jenkins'){
+            steps {
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'reports',
+                    reportFiles: 'index.html',
+                    reportName: 'Relatorio Cypress'
                 ])
             }
         }
