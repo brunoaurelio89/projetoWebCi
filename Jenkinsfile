@@ -22,9 +22,9 @@ pipeline {
         stage('Geração do relatório'){
             steps {
                 publishHTML(target: [
-                    reportDir: 'cypress/reports/html',  // pasta onde está o relatório
+                    reportDir: 'reports',               // pasta onde está o relatório
                     reportFiles: 'index.html',          // arquivo principal do relatório
-                    reportName: 'Relatório de Testes',  // nome que aparece na aba do Jenkins
+                    reportName: 'Reports Tests',        // nome que aparece na aba do Jenkins
                     keepAll: true,                      // para manter histórico de builds antigos deve estar marcado como true
                     alwaysLinkToLastBuild: true,        // link direto para último relatório
                     allowMissing: false                 // essa condição faz com que tudo sempre fique rodando
@@ -33,9 +33,9 @@ pipeline {
         }
 
     }
-    post {
-        always {
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, icon: '', keepAll: true, reportDir: 'cypress/reports/html', reportFiles: 'index.html', reportName: 'Relatório de Testes', reportTitles: '', useWrapperFileDirectly: true])
-        }
-    }
+    // post {
+    //     always {
+    //         publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, icon: '', keepAll: true, reportDir: 'cypress/reports/html', reportFiles: 'index.html', reportName: 'Relatório de Testes', reportTitles: '', useWrapperFileDirectly: true])
+    //     }
+    // }
 }
