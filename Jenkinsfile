@@ -16,7 +16,7 @@ pipeline {
 
         stage('E2E Test') {
             steps {
-                bat 'yarn cypress run'
+                bat 'npx cypress run'
             }
         }
     

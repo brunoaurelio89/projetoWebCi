@@ -12,6 +12,15 @@ module.exports = defineConfig({
     },
   },
 
+  //Esse trecho julga necessario para o Jenkins
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/reports/html',
+    overwrite: false,
+    html: true,
+    json: true
+  },
+
   env: {
     passwordIncorrect: "incorrectPassword",
     passwordCorrect: "654321",
