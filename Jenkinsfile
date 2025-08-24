@@ -33,9 +33,9 @@ pipeline {
         }
 
     }
-    // post {
-    //     always {
-    //         publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, icon: '', keepAll: true, reportDir: 'cypress/reports/html', reportFiles: 'index.html', reportName: 'Relatório de Testes', reportTitles: '', useWrapperFileDirectly: true])
-    //     }
-    // }
+    post {
+        always {
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, icon: '', keepAll: true, reportDir: 'reports', reportFiles: 'index.html', reportName: 'Reports Tests', reportTitles: 'Reports E2E', useWrapperFileDirectly: true])
+        }
+    }
 }
