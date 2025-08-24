@@ -20,3 +20,9 @@ Faker Version: 8.4.1
 5.  Executar os testes
     ` shell yarn cypress run`
 6.  Relatório da execução dos tests `cypress\reports\html\index.html`
+    Obs.: Esse relatório só funciona local. 
+7.  Adicionado arquivo JenkinsFile
+7.1. Config. stages do arquivo para execução dos testes
+7.2. Adicionado Plugin Stage View - Serve para ter uma visão mais clara das execuções
+7.3. Configurando arquivo para impressão de relatório via Jenkins
+
