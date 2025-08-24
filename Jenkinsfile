@@ -10,19 +10,19 @@ pipeline {
 
         stage('Install Yarn') {
             steps {
-                sh 'npm install -g yarn'
+                bat 'npm install -g yarn'
             }
         }
 
         stage('Install dependencies') {
             steps {
-                sh 'yarn'
+                bat 'yarn'
             }
         }
 
         stage('E2E Test') {
             steps {
-                sh 'yarn cypress run'
+                bat 'yarn cypress run'
             }
         }
 
