@@ -62,5 +62,5 @@ pipeline {
     //     always {
     //         publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, icon: '', keepAll: true, reportDir: 'reports', reportFiles: 'index.html', reportName: 'Reports Tests', reportTitles: 'Reports E2E', useWrapperFileDirectly: true])
     //     }
-    // }
+    }
 }
