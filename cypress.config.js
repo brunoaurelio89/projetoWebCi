@@ -13,13 +13,13 @@ module.exports = defineConfig({
   },
 
   //Esse trecho julga necessario para o Jenkins
-  reporter: 'cypress-mochawesome-reporter',
-  reporterOptions: {
-    reportDir: 'cypress/reports/html',
-    overwrite: false,
-    html: true,
-    saveJson: true
-  },
+  // reporter: 'cypress-mochawesome-reporter',
+  // reporterOptions: {
+  //   reportDir: 'cypress/reports/html',
+  //   overwrite: false,
+  //   html: true,
+  //   saveJson: true
+  // },
 
   env: {
     passwordIncorrect: "incorrectPassword",
