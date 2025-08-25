@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-08-25T00:00:47.277Z",
+    "end": "2025-08-25T00:02:07.860Z",
+    "duration": 80583
+  },
+  "results": [
+    {
+      "uuid": "b182ff69-a0ac-46bc-8f0c-4436860b6bfd",
+      "title": "",
+      "fullFile": "cypress\\e2e\\automationExercise\\alterTestCases.cy.js",
+      "file": "cypress\\e2e\\automationExercise\\alterTestCases.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9752981b-6162-47a1-a46a-4f0e8c0b913e",
+          "title": "Suite Test Case of Automation Exercises",
+          "fullFile": "cypress\\e2e\\automationExercise\\alterTestCases.cy.js",
+          "file": "cypress\\e2e\\automationExercise\\alterTestCases.cy.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test Case 1: Register User",
+              "fullTitle": "Suite Test Case of Automation Exercises Test Case 1: Register User",
+              "timedOut": null,
+              "duration": 80476,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_register.default.fillForm();\n_register.default.DeleteAccountCreated();",
+              "err": {},
+              "uuid": "53e9e210-3451-4d20-8d3a-b4f9495f7ccc",
+              "parentUUID": "9752981b-6162-47a1-a46a-4f0e8c0b913e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "53e9e210-3451-4d20-8d3a-b4f9495f7ccc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 80476,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\html\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "saveJson": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

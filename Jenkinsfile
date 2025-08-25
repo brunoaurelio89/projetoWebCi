@@ -22,7 +22,7 @@ pipeline {
     
         stage('Roda Cypress Reports') {
             steps {
-                bat 'npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,json=false'
+                bat 'npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/html,overwrite=false,html=true,savejson=true'
             }
         }
 
