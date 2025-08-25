@@ -3,7 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   viewportHeight: 768,
   viewportWidth: 1920,
-  reporter: "cypress-mochawesome-reporter",
+  // reporter: "cypress-mochawesome-reporter",
   e2e: {
     defaultCommandTimeout: 5000,
     baseUrl: "https://automationexercise.com/",
@@ -13,13 +13,13 @@ module.exports = defineConfig({
   },
 
   //Esse trecho julga necessario para o Jenkins
-  // reporter: 'cypress-mochawesome-reporter',
-  // reporterOptions: {
-  //   reportDir: 'cypress/reports/html',
-  //   overwrite: false,
-  //   html: true,
-  //   saveJson: true
-  // },
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/reports/html',
+    overwrite: false,
+    html: true,
+    saveJson: true
+  },
 
   env: {
     passwordIncorrect: "incorrectPassword",
