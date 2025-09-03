@@ -25,4 +25,4 @@ Faker Version: 8.4.1
 7.1. Config. stages do arquivo para execução dos testes
 7.2. Adicionado Plugin Stage View - Serve para ter uma visão mais clara das execuções
 7.3. Configurando arquivo para impressão de relatório via Jenkins
-
+7.4. Iniciar o Jenkins Local

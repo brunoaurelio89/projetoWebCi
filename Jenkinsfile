@@ -14,11 +14,21 @@ pipeline {
             }
         }
 
-        stage('E2E Test') {
+        // stage('E2E Test') {
+        //     steps {
+        //         bat 'npx cypress run'
+        //     }
+        // }
+        stage('Register'){
             steps {
-                bat 'npx cypress run'
+                bat 'npx cypress run --env grepTags="@register"'
             }
         }
-    
+
+        stage('Login'){
+            steps {
+                bat 'npx cypress run --env grepTags="@login"'
+            }
+        }
     }
 }
